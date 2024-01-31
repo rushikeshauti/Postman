@@ -1,0 +1,1017 @@
+{
+	"info": {
+		"_postman_id": "34edd0cb-b883-4037-8c32-a716b6bcede2",
+		"name": "JanApi_collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32157008",
+		"_collection_link": "https://interstellar-meteor-50506.postman.co/workspace/Jan-Api-testing~87de4c3a-620b-4e38-90b6-87587aff7337/collection/32157008-34edd0cb-b883-4037-8c32-a716b6bcede2?action=share&source=collection_link&creator=32157008"
+	},
+	"item": [
+		{
+			"name": "Day1 practice",
+			"item": [
+				{
+					"name": "Employeeget",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(pm.environment.get(\"status\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(206);\r",
+									"});\r",
+									"\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.test(\"validate the data Empname\", function () {\r",
+									"    var jsonData =JSON.parse(responseBody);\r",
+									"    pm.expect(jsonData.data[2].employee_name).to.eql(pm.environment.get('empname'));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"validate the Employee id \", function () {\r",
+									"   // var jsonData =JSON.parse(responseBody);\r",
+									"    pm.expect(Number(jsonData.data[2].id)).to.eql(Number(pm.environment.get('empid')));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"validate the Employee salary \", function () {\r",
+									"   // var jsonData =JSON.parse(responseBody);\r",
+									"    pm.expect(Number(jsonData.data[2].employee_salary)).to.eql(Number(pm.environment.get('empsal')));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"content type validation\",function()\r",
+									"{\r",
+									"pm.expect(pm.response.headers.get('X-Sol')).to.eql(\"orig\");\r",
+									"})\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url1}}",
+							"host": [
+								"{{url1}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Employeeid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"content type validation\",function()\r",
+									"{\r",
+									"pm.expect(pm.response.headers.get('Display')).to.eql(\"staticcontent_sol, orig_site_sol\");\r",
+									"})\r",
+									"//pm.test(\"Status code is 200\", function () {\r",
+									"  //  pm.response.to.have.status('status');\r",
+									"//});\r",
+									"var jdata=JSON.parse(responseBody);\r",
+									"\r",
+									"pm.test(\"validate the  Empname\", function () {\r",
+									"    var jsonData =JSON.parse(responseBody);\r",
+									"    pm.expect(jsonData.data.employee_name).to.eql(pm.environment.get('dummynameEmp2'));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"validate the  Empsalaray\", function () {\r",
+									"    var jsonData =JSON.parse(responseBody);\r",
+									"    pm.expect(Number(jsonData.data.employe_Salary)).to.eql(Number(pm.environment.get('dummysalaryEmp2')));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"validate the  EmpId\", function () {\r",
+									"    var jsonData =JSON.parse(responseBody);\r",
+									"    pm.expect(Number(jsonData.data.employe_id)).to.eql(Number(pm.environment.get('dummyidEmp2')));\r",
+									"});\r",
+									"\r",
+									"\r",
+									"tests[\"employee_name :\"]=jdata.data.employee_name==\"Tiger Nixon\";"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url2}}",
+							"host": [
+								"{{url2}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Postcreate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//pm.test(\"Status code is 200\", function () {\r",
+									"  //  pm.response.to.have.status(200);\r",
+									"//});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(pm.environment.get(\"status\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"content type validation\",function()\r",
+									"{\r",
+									"pm.expect(pm.response.headers.get('Cache-Control')).to.eql(\"no-cache, private, max-age=86400\");\r",
+									"})\r",
+									"\r",
+									"var jdata=JSON.parse(responseBody);\r",
+									"tests[\"employee_ Age :\"]=jdata.data.age==\"23\";\r",
+									"\r",
+									"pm.test(\"validate the  message\", function () {\r",
+									"    var jsonData =JSON.parse(responseBody);\r",
+									"    pm.expect(jsonData.message).to.eql(pm.environment.get('message'));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"validate the  Name\", function () {\r",
+									"    var jsonData =JSON.parse(responseBody);\r",
+									"    pm.expect(jsonData.data.name).to.eql(pm.environment.get('namepost'));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"validate the  salary\", function () {\r",
+									"    var jsonData =JSON.parse(responseBody);\r",
+									"    pm.expect(Number(jsonData.data.salary)).to.eql(Number(pm.environment.get('salarypost')));\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"{{bnamepost}}\"\r\n,\"salary\":\"{{salarypost}}\"\r\n,\"age\":\"{{agepost}}\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(206);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"content type validation\",function()\r",
+									"{\r",
+									"pm.expect(pm.response.headers.get('Content-Type')).to.eql(\"application/json\");\r",
+									"})\r",
+									"\r",
+									"\r",
+									"\r",
+									"pm.test(\"validate the  salary\", function () {\r",
+									"    var jsonData =JSON.parse(responseBody);\r",
+									"    pm.expect(Number(jsonData.data.salary)).to.eql(Number(pm.environment.get('salaryput')));  \r",
+									"});\r",
+									"\r",
+									"pm.test(\"validate the  Age\", function () {\r",
+									"    var jsonData =JSON.parse(responseBody);\r",
+									"    pm.expect(Number(jsonData.data.age)).to.eql(Number(pm.environment.get('ageput')));  \r",
+									"});\r",
+									"\r",
+									"pm.test(\"validate the  Name\", function () {\r",
+									"    var jsonData =JSON.parse(responseBody);\r",
+									"    pm.expect(jsonData.data.name).to.eql(pm.environment.get('nameput'));  \r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\t{\"name\":\"{{nameput}}\"\r\n    ,\"salary\":\"{{salaryput}}\"\r\n    ,\"age\":\"{{ageput}}\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlput}}",
+							"host": [
+								"{{urlput}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleteid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(206);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"content type validation\",function()\r",
+									"{\r",
+									"pm.expect(pm.response.headers.get('Server')).to.eql(\"Apache\");\r",
+									"})\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\t",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://dummy.restapiexample.com/public/api/v1/delete/2",
+							"protocol": "https",
+							"host": [
+								"dummy",
+								"restapiexample",
+								"com"
+							],
+							"path": [
+								"public",
+								"api",
+								"v1",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Day2",
+			"item": [
+				{
+					"name": "unauthorized",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "postman",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://postman-echo.com/basic-auth",
+							"protocol": "https",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"basic-auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getreqenv",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://reqres.in/api/users?page={{req_page}}",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "{{req_page}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "golbalreq",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://reqres.in/api/users?page={{global_val}}",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "{{global_val}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PassingvalueEnviroment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(pm.environment.get(\"status\"));\r",
+									"});\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.test.skip(\"validate the data username\", function () {\r",
+									"    var jsonData =JSON.parse(responseBody);\r",
+									"    pm.expect(jsonData.data[2].first_name).to.eql(pm.environment.get('firstname'));\r",
+									" //pm.expect(jsonData.data[2].last_name).to.eql(pm.environment.get('lastname'));\r",
+									"});\r",
+									"pm.test.skip(\"validate the data lastname\", function () {\r",
+									"    var jsonData =JSON.parse(responseBody);\r",
+									"    pm.expect(jsonData.data[2].last_name).to.eql(pm.environment.get('lastname'));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"validate the data id\", function () {\r",
+									"    var jsonData =JSON.parse(responseBody);\r",
+									"    pm.expect(Number(jsonData.data[2].id)).to.eql(Number(pm.environment.get('id')));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url1}}",
+							"host": [
+								"{{url1}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Lab",
+			"item": [
+				{
+					"name": "reqresSingle",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://reqres.in/api/users/2",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GET_Request_Listuser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users?page=2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "singleuserGET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "singleusernotfoundGET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/23",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"23"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListResourceGET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Last the first name\",function(){\r",
+							"   // var jsondata=pm.response.json\r",
+							"    var jdata=JSON.parse(responseBody);\r",
+							"    pm.expect(jdata.data[3].first_name).to.eql(\"Byron\");\r",
+							"})\r",
+							"\r",
+							"\r",
+							"\r",
+							"var jdata=JSON.parse(responseBody);\r",
+							"tests[\"verfy firstname :\"]=jdata.data[1].first_name==\"Lindsay\";\r",
+							"\r",
+							"//tests[\"verfy firstname :\"]=jdata.data[2].first_name==\"obias\";\r",
+							"\r",
+							"pm.test(\"Verify the employee data\",function(){\r",
+							"  // var jsondata=pm.response.json\r",
+							"   var jdata=JSON.parse(responseBody);\r",
+							"    pm.expect(jdata.data[2].id).to.eql(9);\r",
+							" //pm.expect(jsondata.data[3].name).to.eql(\"aqua sky\");\r",
+							" //pm.expect(jsondata.data[3].year).to.eql(\"2003\");\r",
+							" //pm.expect(jsondata.data[3].color).to.eql(\"#7BC4C4\");\r",
+							"})\r",
+							"\r",
+							"pm.test(\"content type validation\",function()\r",
+							"{\r",
+							"pm.expect(pm.response.headers.get('Content-Type')).to.eql(\"application/json; charset=utf-8\");\r",
+							"})\r",
+							"\r",
+							"\r",
+							"var jsondata = pm.response.json();\r",
+							"pm.test(\"Verify name\", function(){\r",
+							"    \r",
+							"    var resName = jsondata.data[1].first_name;\r",
+							"    var inputName = \"Lindsay\";\r",
+							"    pm.expect(inputName).to.eql(resName);\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users?page=2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "singleResourceGET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/unknown/2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"unknown",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "single resourcenotfoundGET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/unknown/23",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"unknown",
+						"23"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DelayedresponseGET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users?delay=3",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "delay",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "firstPost_req",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"morpheus\",\r\n    \"job\": \"leader\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register_successfulpost",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"eve.holt@reqres.in\",\r\n    \"password\": \"pistol\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/register",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RegisterunsuccessfullPost",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"sydney@fife\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/register",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Putupdate",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"morpheus\",\r\n    \"job\": \"zion resident\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users/2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patchupdate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"morpheus\",\r\n    \"job\": \"zion resident\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users/2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletereq",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
